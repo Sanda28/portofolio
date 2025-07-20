@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detail Project - Catatku</title>
+  <title>Detail Project - Yourtea</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+
+  <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
-
 <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
-  <header class="p-4 bg-indigo-600 text-white text-center">
-    <h1 class="text-2xl font-bold">Detail Project: Catatku</h1>
-  </header>
 
-  <main class="px-6 py-10 max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row items-start md:items-center gap-10">
-      <!-- Gambar -->
-      <div class="w-full md:w-5/12">
-        <img src="../assets/img/yourtea/1.png" alt="Catatku Screenshot" class="rounded shadow-md w-full" />
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-bold text-lg">Muhamad Sanda Narotama</div>
+      <div class="space-x-4 flex items-center text-sm">
+        <a href="../index.html#hero" class="hover:text-indigo-600">Home</a>
+        <a href="../index.html#about" class="hover:text-indigo-600">About</a>
+        <a href="../index.html#skills" class="hover:text-indigo-600">Skills</a>
+        <a href="../index.html#portfolio" class="hover:text-indigo-600">Portfolio</a>
+        <a href="../index.html#contact" class="hover:text-indigo-600">Contact</a>
+        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center transition">
+          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
+            <!-- Diisi oleh JS -->
+          </svg>
+        </button>
+        <button onclick="logout()" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-28 pb-16 px-6 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
+    <div class="flex flex-col md:flex-row items-start gap-10">
+      
+      <!-- Slick Carousel -->
+      <div class="w-full md:w-1/2">
+        <div class="yourtea-slider rounded overflow-hidden shadow-md">
+          <img src="../assets/img/yourtea/1.png" alt="Yourtea 1" class="w-full" />
+          <img src="../assets/img/yourtea/2.png" alt="Yourtea 2" class="w-full" />
+          <img src="../assets/img/yourtea/3.png" alt="Yourtea 3" class="w-full" />
+        </div>
       </div>
 
-      <!-- Deskripsi + Tombol -->
-      <div class="w-full md:w-7/12">
-        <h2 class="text-2xl font-semibold mb-4">Deskripsi Proyek</h2>
+      <!-- Deskripsi -->
+      <div class="w-full md:w-1/2">
+        <h1 class="text-3xl font-bold mb-4">Yourtea - Penggajian Karyawan</h1>
         <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-        <strong>Yourtea</strong> adalah aplikasi web yang dikembangkan menggunakan framework <strong>CodeIgniter 3</strong>, 
-        yang berfungsi untuk mengelola dan menghitung <strong>penggajian karyawan</strong> secara otomatis berdasarkan data 
-        <strong>kehadiran dan absensi</strong>. Sistem ini dirancang untuk mempermudah proses administrasi gaji secara efisien, 
-        akurat, dan mudah digunakan oleh pihak manajemen perusahaan.
+          <strong>Yourtea</strong> adalah aplikasi web yang dikembangkan menggunakan framework <strong>CodeIgniter 3</strong>, 
+          yang berfungsi untuk mengelola dan menghitung <strong>penggajian karyawan</strong> secara otomatis berdasarkan data 
+          <strong>kehadiran dan absensi</strong>. Sistem ini dirancang untuk mempermudah proses administrasi gaji secara efisien, 
+          akurat, dan mudah digunakan oleh pihak manajemen perusahaan.
         </p>
-
-
         <div class="flex flex-wrap gap-4">
           <a href="https://sanda28.github.io/yourtea-ui/" target="_blank"
             class="px-5 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Live Demo</a>
-            <a href="https://github.com/Sanda28/yourtea" target="_blank"
-            class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-50">View GitHub</a>
+          <a href="https://github.com/Sanda28/yourtea" target="_blank"
+            class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-50 transition">View GitHub</a>
           <a href="../index.html"
             class="px-5 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition">⬅ Kembali</a>
         </div>
@@ -43,13 +72,57 @@
     </div>
   </main>
 
-  <footer class="mt-12 py-6 text-center bg-gray-200 dark:bg-gray-800 dark:text-white">
+  <!-- Footer -->
+  <footer class="mt-auto py-6 text-center bg-gray-200 dark:bg-gray-800 dark:text-white">
     &copy; <span id="year"></span> - Muhamad Sanda Narotama. All rights reserved.
   </footer>
 
+  <!-- jQuery & Slick -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <!-- Script -->
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Dark mode toggle
+    function logout() {
+      localStorage.removeItem('visitorName');
+      location.href = '../index.html';
+    }
+
+    function updateIconSVG(isDark) {
+      const icon = document.getElementById('iconDark');
+      icon.innerHTML = isDark
+        ? `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />`
+        : `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v1m0 16v1m8.49-8.49h-1M4.51 12h-1m15.36-6.36l-.7.7M6.34 6.34l-.7.7m0 10.6l.7.7M17.66 17.66l.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const darkToggle = document.getElementById('darkToggle');
+      const isDark = localStorage.getItem('darkMode') === 'true';
+      if (isDark) document.documentElement.classList.add('dark');
+      updateIconSVG(isDark);
+
+      darkToggle.addEventListener('click', () => {
+        const nowDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('darkMode', nowDark);
+        updateIconSVG(nowDark);
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Slick Carousel Init
+      $('.yourtea-slider').slick({
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        fade: false,
+        infinite: true,
+        speed: 500
+      });
+    });
   </script>
 </body>
-
 </html>

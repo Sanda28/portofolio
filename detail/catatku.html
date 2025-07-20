@@ -6,8 +6,12 @@
   <title>Detail Project - Catatku</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { darkMode: 'class' };
+    tailwind.config = { darkMode: 'class' }
   </script>
+
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
 
@@ -21,9 +25,12 @@
         <a href="../index.html#skills" class="hover:text-indigo-600">Skills</a>
         <a href="../index.html#portfolio" class="hover:text-indigo-600">Portfolio</a>
         <a href="../index.html#contact" class="hover:text-indigo-600">Contact</a>
-        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center rounded-full border dark:border-white border-black transition">
-          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-black dark:text-white">
-            <!-- Default icon set by JS -->
+        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center transition">
+          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
+            <!-- Diisi dari JS -->
           </svg>
         </button>
         <button onclick="logout()" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
@@ -34,9 +41,14 @@
   <!-- Main Content -->
   <main class="pt-28 pb-16 px-6 max-w-6xl mx-auto min-h-screen flex flex-col justify-center">
     <div class="flex flex-col md:flex-row items-start gap-10">
-      <!-- Gambar -->
+      
+      <!-- Carousel Gambar -->
       <div class="w-full md:w-1/2">
-        <img src="../assets/img/catatku/1.png" alt="Catatku Screenshot" class="rounded shadow-md w-full" />
+        <div class="catatku-slider rounded overflow-hidden shadow-md">
+          <img src="../assets/img/catatku/1.png" alt="Catatku 1" class="w-full" />
+          <img src="../assets/img/catatku/2.png" alt="Catatku 2" class="w-full" />
+          <img src="../assets/img/catatku/3.png" alt="Catatku 3" class="w-full" />
+        </div>
       </div>
 
       <!-- Deskripsi + Tombol -->
@@ -46,7 +58,6 @@
           <strong>Catatku</strong> adalah aplikasi web berbasis <strong>Laravel</strong> untuk mencatat pemasukan dan pengeluaran keuangan angkot. 
           Aplikasi ini memudahkan pemilik atau pengelola angkot dalam memantau alur kas secara real-time, rapi, dan efisien.
         </p>
-
         <div class="flex flex-wrap gap-4">
           <a href="https://sanda28.github.io/catatku-ui/" target="_blank"
             class="px-5 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Live Demo</a>
@@ -64,7 +75,11 @@
     &copy; <span id="year"></span> - Muhamad Sanda Narotama. All rights reserved.
   </footer>
 
-  <!-- Script -->
+  <!-- jQuery & Slick JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <!-- JS -->
   <script>
     function logout() {
       localStorage.removeItem('visitorName');
@@ -74,16 +89,15 @@
     function updateIconSVG(isDark) {
       const icon = document.getElementById('iconDark');
       icon.innerHTML = isDark
-        ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-             d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />` // Moon
-        : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-             d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12H3m15.364-6.364l-.707.707M6.343 6.343l-.707.707m0 10.607l.707.707M17.657 17.657l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />`; // Sun
+        ? `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />`
+        : `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v1m0 16v1m8.49-8.49h-1M4.51 12h-1m15.36-6.36l-.7.7M6.34 6.34l-.7.7m0 10.6l.7.7M17.66 17.66l.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />`;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const darkToggle = document.getElementById('darkToggle');
       const isDark = localStorage.getItem('darkMode') === 'true';
-
       if (isDark) document.documentElement.classList.add('dark');
       updateIconSVG(isDark);
 
@@ -94,6 +108,16 @@
       });
 
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Init Slick
+      $('.catatku-slider').slick({
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 500
+      });
     });
   </script>
 </body>
