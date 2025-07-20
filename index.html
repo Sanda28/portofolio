@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhamad Sanda Narotama</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Slick Carousel CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <style>
+    body.entered #intro { display: none; }
+    .fade-in { animation: fadeIn 1s ease-in-out forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
+
+  <!-- Intro -->
+  <section id="intro" class="h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-white-600">
+    <div class="text-center text-white">
+      <h1 class="text-3xl font-semibold mb-6">Welcome to My Portfolio</h1>
+      <p class="mb-4">Enter your name to begin:</p>
+      <input id="nameInput" type="text" placeholder="Your name..." class="px-4 py-2 text-gray-900 rounded" />
+      <button onclick="enterSite()" class="mt-4 px-4 py-2 bg-white text-indigo-700 rounded hover:bg-gray-100">Enter</button>
+    </div>
+  </section>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="hidden fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-bold text-lg">Muhamad Sanda Narotama</div>
+      <div class="space-x-4 flex items-center text-sm">
+        <a href="#hero" class="hover:text-indigo-600">Home</a>
+        <a href="#about" class="hover:text-indigo-600">About</a>
+        <a href="#skills" class="hover:text-indigo-600">Skills</a>
+        <a href="#portfolio" class="hover:text-indigo-600">Portfolio</a>
+        <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center transition">
+          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
+            <!-- Diisi dari JS -->
+          </svg>
+        </button>
+
+
+        <button onclick="logout()" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <!-- Main -->
+  <main id="mainContent" class="hidden fade-in">
+    <!-- Hero -->
+    <section id="hero" class="h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+      <div class="w-full md:w-1/2 text-center md:text-left z-10">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Hello, <span id="displayName"></span> 👋</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-4">I am a Web Developer & Designer</p>
+        <p class="text-lg text-gray-500 dark:text-gray-400 mb-6">Passionate about building interactive, responsive, and user-friendly web applications.</p>
+        <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
+          <a href="assets/CV.pdf" download class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Download CV</a>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 relative hidden md:block">
+        <svg class="absolute w-[400px] h-[400px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#6366F1" d="M41.3,-65.6C52.7,-58.7,61.9,-46.9,67.6,-33.8C73.3,-20.7,75.6,-6.3,74.4,7.8C73.2,21.9,68.5,35.7,59.3,45.7C50.2,55.8,36.7,62,22.5,67.7C8.2,73.4,-6.7,78.7,-22.2,76.3C-37.6,73.8,-53.6,63.7,-62.8,49.7C-72,35.7,-74.3,17.9,-73.4,0.5C-72.5,-16.9,-68.5,-33.7,-59.3,-45.7C-50.2,-57.6,-35.8,-64.7,-20.2,-70C-4.6,-75.4,12.1,-78.9,27.5,-74.6C42.9,-70.3,56.8,-58.4,41.3,-65.6Z" transform="translate(100 100)" />
+        </svg>
+        <img src="assets/img/profile.png" alt="Profile" class="relative z-10 w-72 mx-auto">
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-800" data-aos="fade-up">
+      <div class="max-w-4xl mx-auto text-center text-gray-700 dark:text-gray-300">
+        <h2 class="text-4xl font-bold mb-6 text-indigo-600 dark:text-white">About Me</h2>
+        <p class="mb-4">
+          Saya adalah <strong>Muhamad Sanda Narotama</strong>, lulusan D3 Sistem Informasi dari Bina Sarana Informatika (2021 - 2024). Saya memiliki pengalaman dalam pengembangan website menggunakan framework Laravel dan CodeIgniter 3, serta menjalani PKL di Diskominfo Kabupaten Bogor.
+        </p>
+        <p class="mb-4">
+          Sertifikasi yang saya miliki meliputi Sistem Basis Data dari PT Iner Corp (Juli 2024) dan Pengembang Perangkat Lunak dari BNSP (September 2024).
+        </p>
+        <p class="mb-4">
+          Saya menguasai berbagai teknologi seperti Laravel, CodeIgniter 3, PHP, JavaScript, MySQL, dan menggunakan tools seperti Git dan VS Code.
+        </p>
+        <p class="mb-4">
+          Selain keahlian teknis, saya juga memiliki soft skills seperti komunikasi, problem solving, adaptasi, dan kerja tim.
+        </p>
+        <p class="mb-4">
+          Jika ingin berkolaborasi, silakan hubungi saya di <a href="mailto:sandanarotama362@gmail.com" class="text-indigo-600 underline">sandanarotama362@gmail.com</a> atau lihat karya saya di <a href="https://github.com/Sanda28" class="text-indigo-600 underline">GitHub</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-16 px-4 bg-white dark:bg-gray-900" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-center mb-6">Skills</h2>
+      <div class="flex flex-wrap justify-center gap-4 text-gray-700 dark:text-gray-300">
+        <span class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">HTML</span>
+        <span class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">CSS / Tailwind</span>
+        <span class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">JavaScript</span>
+        <span class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">Git</span>
+        <span class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">Laravel</span>
+        <span class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">Code Igniter 3</span>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="pt-46 pb-16 dark:bg-gray-900 min-h-screen">
+  <div class="container mx-auto px-4">
+    <div class="max-w-xl mx-auto text-center mb-16">
+      <h2 class="font-bold text-indigo-600 text-3xl mb-4 dark:text-white">Portfolio</h2>
+      <p class="text-md text-gray-500 dark:text-gray-300">Ini adalah beberapa Contoh Project yang pernah saya buat</p>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2">
+      
+      <!-- Catatku -->
+      <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
+        <div class="carousel mb-4 rounded overflow-hidden">
+          <div><img src="assets/img/catatku/1.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Catatku 1" /></div>
+          <div><img src="assets/img/catatku/2.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Catatku 2" /></div>
+          <div><img src="assets/img/catatku/3.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Catatku 3" /></div>
+        </div>
+        <h3 class="text-xl font-bold mb-2 dark:text-white">Catatku</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Website Alur Kas Setoran Angkot menggunakan Laravel.</p>
+        <a href="detail/catatku.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
+      </div>
+
+      <!-- Infratek -->
+      <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
+        <div class="carousel mb-4 rounded overflow-hidden">
+          <div><img src="assets/img/infratek/1.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Infratek 1" /></div>
+          <div><img src="assets/img/infratek/2.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Infratek 2" /></div>
+          <div><img src="assets/img/infratek/3.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Infratek 3" /></div>
+        </div>
+        <h3 class="text-xl font-bold mb-2 dark:text-white">Infratek</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Website Alur Kas Setoran Angkot menggunakan Laravel.</p>
+        <a href="detail/infratek.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
+      </div>
+
+      <!-- Yourtea -->
+      <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
+        <div class="carousel mb-4 rounded overflow-hidden">
+          <div><img src="assets/img/yourtea/1.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Yourtea 1" /></div>
+          <div><img src="assets/img/yourtea/2.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Yourtea 2" /></div>
+          <div><img src="assets/img/yourtea/3.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Yourtea 3" /></div>
+        </div>
+        <h3 class="text-xl font-bold mb-2 dark:text-white">Yourtea</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Website Penggajian karyawan Yourtea Menggunakan Framework Code Igniter 3.</p>
+        <a href="detail/yourtea.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 px-4 bg-white dark:bg-gray-900" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-center mb-6">Contact</h2>
+      <div class="max-w-lg mx-auto">
+        <p class="text-center text-gray-600 dark:text-gray-300 mb-4">
+          Email me at <a href="mailto:sandanarotama362@gmail.com" class="text-indigo-600 dark:text-indigo-400 underline">sandanarotama362@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center bg-gray-200 dark:bg-gray-900 dark:text-white">
+      &copy; <span id="year"></span> - Muhamad Sanda Narotama. All rights reserved.
+    </footer>
+  </main>
+
+<!-- jQuery & Slick Carousel -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+  function enterSite() {
+    const name = document.getElementById('nameInput').value.trim();
+    if (name) {
+      localStorage.setItem('visitorName', name);
+      document.body.classList.add('entered');
+      document.getElementById('mainContent').classList.remove('hidden');
+      document.getElementById('navbar').classList.remove('hidden');
+      document.getElementById('displayName').textContent = name;
+    } else {
+      alert('Please enter your name!');
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('visitorName');
+    location.reload();
+  }
+
+  function updateIconSVG(isDark) {
+    const icon = document.getElementById('iconDark');
+    icon.innerHTML = isDark
+      ? `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />` // Moon
+      : `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v1m0 16v1m8.49-8.49h-1M4.51 12h-1m15.36-6.36l-.7.7M6.34 6.34l-.7.7m0 10.6l.7.7M17.66 17.66l.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />`; // Sun
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const darkToggle = document.getElementById('darkToggle');
+    const name = localStorage.getItem('visitorName');
+    const isDark = localStorage.getItem('darkMode') === 'true';
+
+    // Inisialisasi mode gelap
+    if (isDark) document.documentElement.classList.add('dark');
+    updateIconSVG(isDark);
+
+    // Menampilkan halaman jika user sudah masuk
+    if (name) {
+      document.body.classList.add('entered');
+      document.getElementById('mainContent').classList.remove('hidden');
+      document.getElementById('navbar').classList.remove('hidden');
+      document.getElementById('displayName').textContent = name;
+    }
+
+    // Enter dengan tombol Enter
+    document.getElementById('nameInput')?.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') enterSite();
+    });
+
+    // Tombol dark mode toggle
+    darkToggle.addEventListener('click', () => {
+      const nowDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('darkMode', nowDark);
+      updateIconSVG(nowDark);
+    });
+
+    // Tahun di footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Inisialisasi Slick Carousel
+    $('.carousel').slick({
+      autoplay: true,
+      autoplaySpeed: 3000,
+      dots: true,
+      arrows: false,
+      pauseOnHover: true
+    });
+  });
+</script>
+
+</body>
+</html>
