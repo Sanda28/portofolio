@@ -11,6 +11,7 @@
 
   <!-- Slick Carousel CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  
   <style>
     .slick-slide img {
       margin: auto;
@@ -117,8 +118,13 @@
       $('.carousel').slick({
         autoplay: true,
         autoplaySpeed: 3000,
+        dots: false,
         arrows: false,
-        dots: true
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true
       });
     });
   </script>

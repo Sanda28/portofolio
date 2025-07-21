@@ -12,13 +12,45 @@
   <script>
     tailwind.config = { darkMode: 'class' };
   </script>
+  
   <style>
+    
+    
     body.entered #intro { display: none; }
     .fade-in { animation: fadeIn 1s ease-in-out forwards; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .carousel {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slick-slide {
+  height: auto !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex !important;
+  align-items: center;
+}
+
   </style>
 </head>
 <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
@@ -35,51 +67,70 @@
 
   <!-- Navbar -->
   <nav id="navbar" class="hidden fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-50">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="font-bold text-lg">Muhamad Sanda Narotama</div>
-      <div class="space-x-4 flex items-center text-sm">
-        <a href="#hero" class="hover:text-indigo-600">Home</a>
-        <a href="#about" class="hover:text-indigo-600">About</a>
-        <a href="#skills" class="hover:text-indigo-600">Skills</a>
-        <a href="#portfolio" class="hover:text-indigo-600">Portfolio</a>
-        <a href="#contact" class="hover:text-indigo-600">Contact</a>
-        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center transition">
-          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg"
-              fill="none" viewBox="0 0 24 24"
-              stroke="currentColor"
-              class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
-            <!-- Diisi dari JS -->
-          </svg>
-        </button>
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="font-bold text-lg">Muhamad Sanda Narotama</div>
+    
+    <!-- Hamburger Button -->
+    <button id="menuToggle" class="md:hidden text-black dark:text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+           xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
 
+    <!-- Nav Links -->
+    <div id="navLinks" class="hidden md:flex flex-col md:flex-row md:items-center md:space-x-4 absolute md:static bg-white dark:bg-gray-900 w-full left-0 top-full md:w-auto z-50 p-4 md:p-0">
+      <a href="#hero" class="block px-2 py-1 hover:text-indigo-600">Home</a>
+      <a href="#about" class="block px-2 py-1 hover:text-indigo-600">About</a>
+      <a href="#skills" class="block px-2 py-1 hover:text-indigo-600">Skills</a>
+      <a href="#portfolio" class="block px-2 py-1 hover:text-indigo-600">Portfolio</a>
+      <a href="#contact" class="block px-2 py-1 hover:text-indigo-600">Contact</a>
 
-        <button onclick="logout()" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
-      </div>
+      <button id="darkToggle" class="w-8 h-8 flex items-center justify-center transition mt-2 md:mt-0">
+        <svg id="iconDark" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6 text-black dark:text-white transition-colors duration-300"></svg>
+      </button>
+
+      <button onclick="logout()" class="mt-2 md:mt-0 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
     </div>
+  </div>
   </nav>
 
   <!-- Main Content -->
   <!-- Main -->
   <main id="mainContent" class="hidden fade-in">
     <!-- Hero -->
-    <section id="hero" class="h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 bg-white dark:bg-gray-900 relative overflow-hidden">
-      <div class="w-full md:w-1/2 text-center md:text-left z-10">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Hello, <span id="displayName"></span> 👋</h1>
-        <p class="text-xl text-gray-600 dark:text-gray-300 mb-4">I am a Web Developer & Designer</p>
-        <p class="text-lg text-gray-500 dark:text-gray-400 mb-6">Passionate about building interactive, responsive, and user-friendly web applications.</p>
-        <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
-          <a href="assets/CV.pdf" download class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Download CV</a>
-        </div>
+    <section id="hero" class="min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-between px-6 md:px-20 bg-white dark:bg-gray-900 relative overflow-hidden pt-20 md:pt-0">
+  
+    <!-- Gambar untuk mobile -->
+    <div class="block md:hidden mb-6 text-center">
+      <img src="assets/img/profile.png" alt="Profile" class="w-48 mx-auto rounded-full shadow-lg">
+    </div>
+
+    <!-- Konten Teks -->
+    <div class="w-full md:w-1/2 text-center md:text-left z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Hello, <span id="displayName"></span> 👋</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-4">I am a Web Developer & Designer</p>
+      <p class="text-lg text-gray-500 dark:text-gray-400 mb-6">Passionate about building interactive, responsive, and user-friendly web applications.</p>
+      <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
+        <a href="assets/CV.pdf" download class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Download CV</a>
       </div>
-      <div class="w-full md:w-1/2 relative hidden md:block">
-        <svg class="absolute w-[400px] h-[400px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0"
-            viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path class="fill-indigo-500 dark:fill-white" d="M41.3,-65.6C52.7,-58.7,61.9,-46.9,67.6,-33.8C73.3,-20.7,75.6,-6.3,74.4,7.8C73.2,21.9,68.5,35.7,59.3,45.7C50.2,55.8,36.7,62,22.5,67.7C8.2,73.4,-6.7,78.7,-22.2,76.3C-37.6,73.8,-53.6,63.7,-62.8,49.7C-72,35.7,-74.3,17.9,-73.4,0.5C-72.5,-16.9,-68.5,-33.7,-59.3,-45.7C-50.2,-57.6,-35.8,-64.7,-20.2,-70C-4.6,-75.4,12.1,-78.9,27.5,-74.6C42.9,-70.3,56.8,-58.4,41.3,-65.6Z"
-                transform="translate(100 100)" />
-        </svg>
-        <img src="assets/img/profile.png" alt="Profile" class="relative z-10 w-72 mx-auto">
-      </div>
-    </section>
+    </div>
+
+    <!-- Gambar untuk desktop -->
+    <div class="hidden md:block w-full md:w-1/2 relative">
+      <svg class="absolute w-[400px] h-[400px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0"
+        viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path class="fill-indigo-500 dark:fill-white" d="M41.3,-65.6C52.7,-58.7,61.9,-46.9,67.6,-33.8C73.3,-20.7,75.6,-6.3,74.4,7.8C73.2,21.9,68.5,35.7,59.3,45.7C50.2,55.8,36.7,62,22.5,67.7C8.2,73.4,-6.7,78.7,-22.2,76.3C-37.6,73.8,-53.6,63.7,-62.8,49.7C-72,35.7,-74.3,17.9,-73.4,0.5C-72.5,-16.9,-68.5,-33.7,-59.3,-45.7C-50.2,-57.6,-35.8,-64.7,-20.2,-70C-4.6,-75.4,12.1,-78.9,27.5,-74.6C42.9,-70.3,56.8,-58.4,41.3,-65.6Z"
+          transform="translate(100 100)" />
+      </svg>
+      <img src="assets/img/profile.png" alt="Profile" class="relative z-10 w-72 mx-auto">
+    </div>
+  </section>
+
 
     <!-- About Section -->
     <section id="about" class="h-screen flex items-center justify-center px-4 bg-gray-50 dark:bg-gray-800" data-aos="fade-up">
@@ -116,55 +167,57 @@
       </div>
     </section>
 
+
     <!-- Portfolio -->
     <section id="portfolio" class="pt-46 pb-16 dark:bg-gray-900 min-h-screen">
-  <div class="container mx-auto px-4">
-    <div class="max-w-xl mx-auto text-center mb-16">
-      <h2 class="font-bold text-indigo-600 text-3xl mb-4 dark:text-white">Portfolio</h2>
-      <p class="text-md text-gray-500 dark:text-gray-300">Ini adalah beberapa Contoh Project yang pernah saya buat</p>
-    </div>
-    <div class="grid gap-8 md:grid-cols-2">
-      
-      <!-- Catatku -->
-      <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
-        <div class="carousel mb-4 rounded overflow-hidden">
-          <div><img src="assets/img/catatku/1.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Catatku 1" /></div>
-          <div><img src="assets/img/catatku/2.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Catatku 2" /></div>
-          <div><img src="assets/img/catatku/3.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Catatku 3" /></div>
+      <div class="container mx-auto px-4">
+        <div class="max-w-xl mx-auto text-center mb-16">
+          <h2 class="font-bold text-indigo-600 text-3xl mb-4 dark:text-white">Portfolio</h2>
+          <p class="text-md text-gray-500 dark:text-gray-300">Ini adalah beberapa Contoh Project yang pernah saya buat</p>
         </div>
-        <h3 class="text-xl font-bold mb-2 dark:text-white">Catatku</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">Website Alur Kas Setoran Angkot menggunakan Laravel.</p>
-        <a href="detail/catatku.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
-      </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          
+          <!-- Catatku -->
+          <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
+            <div class="catatku-slider h-64 rounded overflow-hidden mb-4">
+              <div><img src="assets/img/catatku/1.png" class="w-full h-full object-cover rounded" alt="Catatku 1" /></div>
+              <div><img src="assets/img/catatku/2.png" class="w-full h-full object-cover rounded" alt="Catatku 2" /></div>
+              <div><img src="assets/img/catatku/3.png" class="w-full h-full object-cover rounded" alt="Catatku 3" /></div>
+            </div>
 
-      <!-- Infratek -->
-      <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
-        <div class="carousel mb-4 rounded overflow-hidden">
-          <div><img src="assets/img/infratek/1.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Infratek 1" /></div>
-          <div><img src="assets/img/infratek/2.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Infratek 2" /></div>
-          <div><img src="assets/img/infratek/3.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Infratek 3" /></div>
+
+            <h3 class="text-xl font-bold mb-2 dark:text-white">Catatku</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Website Alur Kas Setoran Angkot menggunakan Laravel.</p>
+            <a href="detail/catatku.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
+          </div>
+
+          <!-- Infratek -->
+          <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
+            <div class="infratek-slider rounded overflow-hidden h-64 mb-4">
+              <img src="assets/img/infratek/1.png" class="w-full h-full object-cover rounded" alt="Infratek 1" />
+              <img src="assets/img/infratek/2.png" class="w-full h-full object-cover rounded" alt="Infratek 2" />
+              <img src="assets/img/infratek/3.png" class="w-full h-full object-cover rounded" alt="Infratek 3" />
+            </div>
+            <h3 class="text-xl font-bold mb-2 dark:text-white">Infratek</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Website Alur Kas Setoran Angkot menggunakan Laravel.</p>
+            <a href="detail/infratek.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
+          </div>
+
+          <!-- Yourtea -->
+          <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
+            <div class="yourtea-slider rounded overflow-hidden h-64 mb-4">
+              <img src="assets/img/yourtea/1.png" class="w-full h-full object-cover rounded" alt="Yourtea 1" />
+              <img src="assets/img/yourtea/2.png" class="w-full h-full object-cover rounded" alt="Yourtea 2" />
+              <img src="assets/img/yourtea/3.png" class="w-full h-full object-cover rounded" alt="Yourtea 3" />
+            </div>
+            <h3 class="text-xl font-bold mb-2 dark:text-white">Yourtea</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Website Penggajian karyawan Yourtea Menggunakan Framework Code Igniter 3.</p>
+            <a href="detail/yourtea.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
+          </div>
+
         </div>
-        <h3 class="text-xl font-bold mb-2 dark:text-white">Infratek</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">Website Alur Kas Setoran Angkot menggunakan Laravel.</p>
-        <a href="detail/infratek.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
       </div>
-
-      <!-- Yourtea -->
-      <div class="rounded shadow-md p-4 bg-white dark:bg-gray-800">
-        <div class="carousel mb-4 rounded overflow-hidden">
-          <div><img src="assets/img/yourtea/1.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Yourtea 1" /></div>
-          <div><img src="assets/img/yourtea/2.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Yourtea 2" /></div>
-          <div><img src="assets/img/yourtea/3.png" class="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover" alt="Yourtea 3" /></div>
-        </div>
-        <h3 class="text-xl font-bold mb-2 dark:text-white">Yourtea</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">Website Penggajian karyawan Yourtea Menggunakan Framework Code Igniter 3.</p>
-        <a href="detail/yourtea.html" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Lihat Detail</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Contact -->
     <section id="contact" class="py-16 px-4 bg-white dark:bg-gray-900" data-aos="fade-up">
@@ -249,13 +302,29 @@
 
     // Inisialisasi Slick Carousel
     $('.carousel').slick({
+      dots: true,
+      infinite: true,
+      speed: 500,
       autoplay: true,
       autoplaySpeed: 3000,
-      dots: true,
       arrows: false,
-      pauseOnHover: true
+      mobileFirst: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            dots: true
+          }
+        }
+      ]
     });
   });
+
+  document.getElementById('menuToggle')?.addEventListener('click', function () {
+  const navLinks = document.getElementById('navLinks');
+  navLinks.classList.toggle('hidden');
+});
+
 </script>
 
 </body>
