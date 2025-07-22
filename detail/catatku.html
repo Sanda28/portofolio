@@ -16,36 +16,39 @@
 <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-50">
+  <nav id="navbar" class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="font-bold text-lg">Muhamad Sanda Narotama</div>
+      <!-- Logo / Brand -->
+      <div class="font-bold text-lg text-black dark:text-white">Muhamad Sanda Narotama</div>
 
-      <!-- Hamburger Toggle (Mobile Only) -->
-      <button id="menuToggle" class="md:hidden text-gray-700 dark:text-white focus:outline-none">
+      <!-- Hamburger Button (Mobile) -->
+      <button id="menuToggle" class="md:hidden text-black dark:text-white focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
+                d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
 
-      <!-- Menu Links -->
-      <div id="menuLinks" class="menu-links hidden md:flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-4 mt-4 md:mt-0 text-sm absolute md:static bg-white dark:bg-gray-900 left-0 w-full md:w-auto px-4 md:px-0 py-4 md:py-0 shadow-md md:shadow-none z-40">
-        <a href="../index.html" class="hover:text-indigo-600">Home</a>
-        <a href="../index.html#about" class="hover:text-indigo-600">About</a>
-        <a href="../index.html#skills" class="hover:text-indigo-600">Skills</a>
-        <a href="../index.html#portfolio" class="hover:text-indigo-600">Portfolio</a>
-        <a href="../index.html#contact" class="hover:text-indigo-600">Contact</a>
+      <!-- Navigation Links -->
+      <div id="navLinks" class="hidden md:flex flex-col md:flex-row md:items-center md:space-x-4 absolute md:static bg-white dark:bg-gray-900 w-full left-0 top-full md:w-auto z-50 p-4 md:p-0">
+        <a href="../index.html" class="block px-2 py-1 hover:text-indigo-600 text-black dark:text-white">Home</a>
+        <a href="../index.html#about" class="block px-2 py-1 hover:text-indigo-600 text-black dark:text-white">About</a>
+        <a href="../index.html#skills" class="block px-2 py-1 hover:text-indigo-600 text-black dark:text-white">Skills</a>
+        <a href="../index.html#portfolio" class="block px-2 py-1 hover:text-indigo-600 text-black dark:text-white">Portfolio</a>
+        <a href="../index.html#contact" class="block px-2 py-1 hover:text-indigo-600 text-black dark:text-white">Contact</a>
 
-        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center transition">
-          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
-            <!-- Diisi dari JS -->
-          </svg>
+        <!-- Dark Mode Toggle -->
+        <button id="darkToggle" class="w-8 h-8 flex items-center justify-center mt-2 md:mt-0">
+          <svg id="iconDark" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor"
+              class="w-6 h-6 text-black dark:text-white transition-colors duration-300"></svg>
         </button>
-        <button onclick="logout()" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Logout</button>
+
+        <!-- Logout Button -->
+        <button onclick="logout()" class="mt-2 md:mt-0 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+          Logout
+        </button>
       </div>
     </div>
   </nav>
@@ -134,9 +137,9 @@
       adaptiveHeight: true
       });
       // ✅ Tambahkan di sini
-      document.getElementById('menuToggle').addEventListener('click', () => {
-        const menu = document.getElementById('menuLinks');
-        menu.classList.toggle('hidden');
+      document.getElementById('menuToggle')?.addEventListener('click', function () {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('hidden');
       });
     });
   </script>
