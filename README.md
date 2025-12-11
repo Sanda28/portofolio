@@ -6,7 +6,7 @@ Website ini berisi informasi tentang diri saya, pengalaman, proyek-proyek yang p
 ---
 
 ## 🚀 Demo Website  
-🔗 **Live Demo:**[ (https://sanda28.github.io/portofolio/) ]
+🔗 **Live Demo:**[(https://portofolio-sanda.vercel.app/)]
 
 ---
 
