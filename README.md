@@ -15,8 +15,6 @@ Saya adalah seorang **Web Developer** yang fokus pada pembuatan website dan apli
 Saya suka mengerjakan project mulai dari desain tampilan hingga pengerjaan bagian logika dan fungsionalitasnya.  
 Selain programming, saya juga memiliki pengalaman membuat **poster, banner, dan pamflet** digital.
 
-Saya merupakan lulusan **Bina Sarana Informatika** program studi **Sistem Informasi**, dengan IPK **3.86**.
-
 ---
 
 ## ✨ Fitur Portfolio
