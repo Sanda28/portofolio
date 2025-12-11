@@ -1,16 +1,52 @@
-# React + Vite
+# 🌐 Portfolio — Muhamad Sanda Narotama
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio pribadi yang dibuat menggunakan **React + Vite** serta didukung dengan **TailwindCSS**, **AOS Animation**, dan desain modern yang responsif.  
+Website ini berisi informasi tentang diri saya, pengalaman, proyek-proyek yang pernah saya buat, serta kontak yang bisa dihubungi.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo Website  
+🔗 **Live Demo:**[ (https://sanda28.github.io/portofolio/) ]
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧑‍💻 Tentang Saya  
+Saya adalah seorang **Web Developer** yang fokus pada pembuatan website dan aplikasi berbasis web.  
+Saya suka mengerjakan project mulai dari desain tampilan hingga pengerjaan bagian logika dan fungsionalitasnya.  
+Selain programming, saya juga memiliki pengalaman membuat **poster, banner, dan pamflet** digital.
 
-## Expanding the ESLint configuration
+Saya merupakan lulusan **Bina Sarana Informatika** program studi **Sistem Informasi**, dengan IPK **3.86**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Fitur Portfolio
+- 🎨 Desain modern & minimalis  
+- 📱 Responsif (Mobile, Tablet, Desktop)  
+- 🧭 Sticky Navbar & Scroll Animation  
+- ⚡ Preloader Custom  
+- 🎞 AOS Animation untuk efek scroll  
+- 🧰 Menampilkan tools & teknologi yang saya pakai  
+- 📂 Menampilkan beberapa proyek lengkap dengan:
+  - Preview gambar  
+  - Tools/teknologi yang digunakan  
+  - Link GitHub  
+  - Link Demo Website  
+- 📩 Form kontak via FormSubmit  
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+- **React JS**
+- **Vite**
+- **TailwindCSS**
+- **AOS (Animate On Scroll)**
+- **Remix Icon**
+- **Animate.css**
+
+---
+
+## 📦 Instalasi & Menjalankan Project
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/Sanda28/portofolio.git
