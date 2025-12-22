@@ -1,20 +1,20 @@
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
     const { message } = req.body;
 
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: [
         {
           role: "system",
           content: `
@@ -28,18 +28,25 @@ Project: Catatku, YAFAHI, INFRATEK, YourTea
 GitHub: https://github.com/Sanda28
           `,
         },
-        { role: "user", content: message },
+        {
+          role: "user",
+          content: message,
+        },
       ],
     });
 
-    return res.status(200).json({
-      reply: completion.choices[0].message.content,
-    });
-  } catch (err) {
-    console.error("OPENAI ERROR:", err);
+    const reply =
+      response.output_text ||
+      response.output?.[0]?.content?.[0]?.text ||
+      "Maaf, aku belum bisa menjawab itu.";
+
+    return res.status(200).json({ reply });
+  } catch (error) {
+    console.error("OPENAI ERROR FULL:", error);
+
     return res.status(500).json({
-      error: "AI error",
-      detail: err.message,
+      error: "Server error",
+      detail: error.message,
     });
   }
 }
